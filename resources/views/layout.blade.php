@@ -30,7 +30,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="/myservices">My Services</a>
-              <a class="dropdown-item" href="/logout">Logout, {{Auth::user()->FirstName}}</a>
+              <a class="dropdown-item" href="/logout">Logout {{Auth::user()->FirstName}}</a>
             </div>
           </li>
         </ul>
