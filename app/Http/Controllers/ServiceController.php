@@ -139,8 +139,7 @@ class ServiceController extends Controller
 
     public function deleteService($eventId=null, Request $request){
         if($eventId){
-            Event::destroy($eventId);
-
+            Event::find($eventId)->delete();
             return redirect('/myservices');
         }
         

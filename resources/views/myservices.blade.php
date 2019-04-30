@@ -26,10 +26,10 @@
             <td>{{$event->EndTime}}</td>
             <td>{{$event->EventType->Name}}</td>
             <td><a class="btn btn-primary" href="/service/{{$event->EventId}}/edit" role="button">Edit</a></td>
-            <td><a class="btn btn-danger" data-toggle="modal"  data-target="#exampleModal"  role="button">Delete</a></td>
+            <td><a class="btn btn-danger" data-toggle="modal"  data-target="#exampleModal{{$event->EventId}}"  role="button">Delete</a></td>
         </tr>    
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal{{$event->EventId}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
