@@ -33,7 +33,10 @@ Route::get('/map', 'MapController@index');
 Route::middleware(['authenticated'])->group(function(){
     Route::get('/service', 'ServiceController@addService');
     Route::post('/service', 'ServiceController@store');
+    Route::get('/service/{id}/edit', 'ServiceController@edit');
+    Route::post('/service/{id}/edit', 'ServiceController@storeService');
     
+    Route::delete('service/{id}/delete', 'ServiceController@deleteService');
     Route::get('/settings', 'SettingsController@index');
     Route::get('/myservices', 'ServiceController@getUserServices');
 });

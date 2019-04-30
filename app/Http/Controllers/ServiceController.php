@@ -77,4 +77,72 @@ class ServiceController extends Controller
             'types' => $types
         ]);
     }
+
+    public function edit($eventId=null){
+        if($eventId){
+            $event = Event::find($eventId);
+            $types = EventType::all();
+            $orgs = Organization::where('OrganizationId', Auth::user()->CompanyId)->get();
+
+            return view('editService', [
+                'event' => $event,
+                'types' => $types,
+                'orgs' => $orgs
+            ]);
+        }
+
+    }
+
+    public function storeService($eventId, Request $request){
+        $input = $request->all();
+
+        $validation = Validator::make($input, [
+            'title' => 'required',
+            'address' => 'required',
+            'date' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required',
+            'type_select' => 'required',
+            'org_select' => 'required',
+            'city' =>'required',
+            'state_select' => 'required',
+            'zip_code' => 'required|numeric'
+        ]);
+
+
+        if($validation->fails()){
+            return redirect('/service')
+            ->withInput()
+            ->withErrors($validation);
+
+        }
+
+        $event = Event::find($eventId);
+
+        $event->Title = request('title');
+        $event->Address = $request->address;
+        $event->Date = $request->date;
+        $event->StartTime = $request->start_time;
+        $event->EndTime = $request->end_time;
+        $event->EventTypeId = $request->type_select;
+        $event->OrganizationId = $request->org_select;
+        $event->City = $request->city;
+        $event->State = $request->state_select;
+        $event->ZipCode = $request->zip_code;
+
+
+        $event->save();
+
+        return redirect('/myservices');
+
+    }
+
+    public function deleteService($eventId=null, Request $request){
+        if($eventId){
+            Event::destroy($eventId);
+
+            return redirect('/myservices');
+        }
+        
+    }
 }
