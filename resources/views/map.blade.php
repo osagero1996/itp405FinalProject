@@ -13,6 +13,7 @@
         <th>Start Time</th>
         <th>End Time</th>
         <th>Type</th>
+        <th>Org</th>
     </tr>
 
     @forelse ($events as $event)
@@ -24,6 +25,7 @@
             <td>{{$event->StartTime}}</td>
             <td>{{$event->EndTime}}</td>
             <td>{{$event->EventType->Name}}</td>
+            <td>{{$event->Org->Name}}</td>
         </tr>    
 
         

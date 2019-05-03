@@ -37,7 +37,7 @@ Route::middleware(['authenticated'])->group(function(){
     Route::post('/service/{id}/edit', 'ServiceController@storeService');
     
     Route::delete('service/{id}/delete', 'ServiceController@deleteService');
-    Route::get('/settings', 'SettingsController@index');
+
     Route::get('/myservices', 'ServiceController@getUserServices');
 });
 // have middleware to only allow people who are authenticated to see certain pages

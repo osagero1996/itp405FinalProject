@@ -13,4 +13,8 @@ class Event extends Model
      public function EventType(){
           return $this->belongsTo('App\EventType', 'EventTypeId');
      }
+
+     public function Org(){
+          return $this->belongsTo('App\Organization', 'OrganizationId');
+     }
 }
